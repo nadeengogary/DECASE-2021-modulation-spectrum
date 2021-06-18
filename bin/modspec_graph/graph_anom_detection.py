@@ -138,7 +138,6 @@ if __name__ == '__main__':
      if n < 2:
         print('Please enter dev/eval mode')
      mode = sys.argv[1]
-     pdb.set_trace()
      if mode == 'd' or mode == 'e':
          main(mode)
      else:
