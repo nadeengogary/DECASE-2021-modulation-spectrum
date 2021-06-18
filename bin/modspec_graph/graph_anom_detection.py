@@ -51,7 +51,7 @@ def get_anom_score(X_test, means, deviations):
 
 def main(mode):
 
-    machines = ['pump']
+    machines = ['pump', 'slider']
 
     reducenoise = 100
 
