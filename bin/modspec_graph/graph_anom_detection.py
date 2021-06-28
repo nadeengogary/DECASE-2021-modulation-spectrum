@@ -53,7 +53,7 @@ def main(mode):
 
     machines = ['ToyCar', 'ToyConveyor', 'fan', 'pump', 'slider', 'valve']
 
-    reducenoise = 100
+    reducenoise = 90
 
     if mode == 'd':
 
