@@ -18,13 +18,13 @@ def get_noise(m, mid, reducenoise, mode):
 	normal_train_files = [file for file in normal_train_files if int(file.split('_')[2]) == mid and file[-4:] == '.wav']
 	noise = []
 	for sample in normal_train_files[:reducenoise]:
-		y, fs = librosa.load(path + m +'/train/'+ sample, sr = 16000)
+		y, fs = librosa.load(path + m +'/train/'+ sample, sr = 22050)
 		noise.append(y)
 	noise = np.mean(noise, axis = 0)
 	return noise
  
 def read_spectrum(path, noise, reducenoise):
-	y, fs = librosa.load(path, sr = 16000)
+	y, fs = librosa.load(path, sr = 22050)
 	if reducenoise:
 		y = nr.reduce_noise(audio_clip=y, noise_clip=noise)
 	modspec = srmr(y, fs, n_cochlear_filters = 60, norm = False, low_freq=125, min_cf=4, max_cf=128)[1]
