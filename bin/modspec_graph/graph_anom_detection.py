@@ -83,7 +83,7 @@ def main(mode):
                 y_pred_gr = get_anom_score(X_test, means, deviations)
 
                 AUC = roc_auc_score(y_test, y_pred_gr)
-                pAUC = roc_auc_score(y_test, y_pred_gr, max_fpr=1.0)
+                pAUC = roc_auc_score(y_test, y_pred_gr, max_fpr=0.01)
                 anom_scores_ensemble[m][mid]['gr'] = y_pred_gr
 
                 results['Machine'].append(m)
