@@ -27,7 +27,7 @@ def read_spectrum(path, noise, reducenoise):
 	y, fs = librosa.load(path, sr = 22050)
 	if reducenoise:
 		y = nr.reduce_noise(audio_clip=y, noise_clip=noise)
-	modspec = srmr(y, fs, n_cochlear_filters = 60, norm = False, low_freq=125, min_cf=4, max_cf=128)[1]
+	modspec = srmr(y, fs, n_cochlear_filters = 70, norm = False, low_freq=125, min_cf=4, max_cf=128)[1]
 	modspec = np.mean(modspec, axis = 2)
 	return modspec
 
