@@ -74,6 +74,7 @@ def GMM(X_train, X_test):
 	y_pred_iv = -1 * y_pred
 	return y_pred_iv
 	print(clf.shape)
+	print(X_train.shape)
 
 def main(mode):
 
