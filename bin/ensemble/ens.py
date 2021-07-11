@@ -48,7 +48,11 @@ def get_test_files(m, mid, mode):
 
 def main(mode):
 
-	machines = ['ToyCar', 'ToyConveyor', 'fan', 'pump', 'slider', 'valve']
+	machines = [
+# 		'ToyCar', 'ToyConveyor', 'fan',
+		    'pump'
+# 		    , 'slider', 'valve'
+		   ]
 
 	if mode == 'd':
 
