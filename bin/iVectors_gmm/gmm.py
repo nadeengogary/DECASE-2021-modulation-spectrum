@@ -72,9 +72,10 @@ def GMM(X_train, X_test):
 	clf = mixture.GaussianMixture(n_components = 10, covariance_type='full', random_state = 42).fit(X_train)
 	y_pred = clf.score_samples(X_test)
 	y_pred_iv = -1 * y_pred
-	return y_pred_iv
 	print(clf.shape)
 	print(X_train.shape)
+	return y_pred_iv
+	
 
 def main(mode):
 
