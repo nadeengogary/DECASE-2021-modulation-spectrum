@@ -73,6 +73,7 @@ def GMM(X_train, X_test):
 	y_pred = clf.score_samples(X_test)
 	y_pred_iv = -1 * y_pred
 	return y_pred_iv
+	print(clf.shape)
 
 def main(mode):
 
