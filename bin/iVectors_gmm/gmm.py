@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from sklearn import mixture
 from sklearn.metrics import roc_auc_score
-from Kersal_model import *
+from Keras_model import *
 
 def get_machine_ids(machines, mode):
 	mid_dict = {}
