@@ -1,6 +1,7 @@
 import keras.models
 from keras.models import Model
 from keras.layers import Input, Dense, BatchNormalization, Activation, Multiply
+from keras import backend as K
 
 ########################################################################
 # keras model
@@ -46,8 +47,9 @@ def get_model(inputDim):
     h = Activation('relu')(h)
 
     h = Dense(inputDim)(h)
+    model = Model(inputs=inputLayer, outputs=h)
 
-    return Model(inputs=inputLayer, outputs=h)
+    return model.outputs
 
 def load_model(file_path):
     return keras.models.load_model(file_path)
