@@ -1,10 +1,11 @@
 import os
 import sys
 import pickle
-import numpy as np 
+import numpy as np
 import pandas as pd
 from sklearn import mixture
 from sklearn.metrics import roc_auc_score
+import Keras_model
 
 def get_machine_ids(machines, mode):
 	mid_dict = {}
@@ -73,7 +74,7 @@ def GMM(X_train, X_test):
 	y_pred = clf.score_samples(X_test)
 	y_pred_iv = -1 * y_pred
 	return y_pred_iv
-	
+
 
 def main(mode):
 
@@ -105,15 +106,15 @@ def main(mode):
 				AUC = roc_auc_score(y_test, y_pred_iv)
 				pAUC = roc_auc_score(y_test, y_pred_iv, max_fpr = 0.1)
 				anom_scores_ensemble[m][mid]['iv'] = y_pred_iv
-				
+
 				results['Machine'].append(m)
 				results['Mid'].append(mid)
 				results['AUC'].append(AUC)
 				results['pAUC'].append(pAUC)
-				
+
 				avg['AUC'].append(AUC)
 				avg['pAUC'].append(pAUC)
-			
+
 			results['Machine'].append(m)
 			results['Mid'].append('Average')
 			results['AUC'].append(np.mean(avg['AUC']))
@@ -139,9 +140,13 @@ def main(mode):
 				anom_scores_ensemble[m][mid] = {}
 				anom_scores = {'file':[], 'anomaly_score':[]}
 
-				X_train = read_train(m, mid, mode)
-				X_test, eval_files = read_test(m, mid, mode)
-				
+				X_train_old = read_train(m, mid, mode)
+				X_train_dim = X_train_old.ndim
+				X_train = Keras_model.get_model(X_train_dim)
+				X_test_old, eval_files_old = read_test(m, mid, mode)
+				X_test_dim = X_test_old.ndim
+				X_test,eval_files = Keras_model.get_model(X_test_dim)
+
 				y_pred_iv = GMM(X_train, X_test)
 				anom_scores['file'] = eval_files
 				anom_scores['anomaly_score'] = y_pred_iv
@@ -163,6 +168,3 @@ if __name__ == '__main__':
 		main(mode)
 	else:
 		print('Invalid mode')
-
-
-
