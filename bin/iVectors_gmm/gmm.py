@@ -79,9 +79,9 @@ def GMM(X_train, X_test):
 def main(mode):
 
 	machines = [
-# 		'ToyCar', 'ToyConveyor', 'fan',
+		'ToyCar', 'ToyConveyor', 'fan',
 		'pump'
-# 		, 'slider', 'valve'
+		, 'slider', 'valve'
 	]
 
 	if mode == 'd':
