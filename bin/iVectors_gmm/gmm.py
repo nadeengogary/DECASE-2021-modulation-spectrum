@@ -101,10 +101,10 @@ def main(mode):
 
 				X_train_old = read_train(m, mid, mode)
 				X_train_dim = X_train_old.ndim
-				X_train = Keras_model.get_model(X_train_dim)
+				X_train =get_model(X_train_dim)
 				X_test_old, eval_files_old = read_test(m, mid, mode)
 				X_test_dim = X_test_old.ndim
-				X_test,eval_files = Keras_model.get_model(X_test_dim)
+				X_test,eval_files = get_model(X_test_dim)
 				y_pred_iv = GMM(X_train, X_test)
 
 				AUC = roc_auc_score(y_test, y_pred_iv)
@@ -146,10 +146,10 @@ def main(mode):
 
 				X_train_old = read_train(m, mid, mode)
 				X_train_dim = X_train_old.ndim
-				X_train = Keras_model.get_model(X_train_dim)
+				X_train = get_model(X_train_dim)
 				X_test_old, eval_files_old = read_test(m, mid, mode)
 				X_test_dim = X_test_old.ndim
-				X_test,eval_files = Keras_model.get_model(X_test_dim)
+				X_test,eval_files = get_model(X_test_dim)
 
 				y_pred_iv = GMM(X_train, X_test)
 				anom_scores['file'] = eval_files
