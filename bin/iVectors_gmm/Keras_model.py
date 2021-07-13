@@ -49,7 +49,7 @@ def get_model(X):
     h = Dense(inputDim)(h)
     model = Model(inputs=inputLayer, outputs=h)
     # model.compile()
-    return model.predict(inputDim)
+    return model.predict(X)
     # return Model(inputs=inputLayer, outputs=h)
 
 def load_model(file_path):

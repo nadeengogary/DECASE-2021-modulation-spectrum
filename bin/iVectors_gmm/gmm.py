@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn import mixture
 from sklearn.metrics import roc_auc_score
 from Keras_model import *
-from Denoise_GMM import *
+# from Denoise_GMM import *
 
 def get_machine_ids(machines, mode):
 	mid_dict = {}
