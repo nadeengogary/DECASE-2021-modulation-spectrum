@@ -5,7 +5,8 @@ import numpy as np
 import pandas as pd
 from sklearn import mixture
 from sklearn.metrics import roc_auc_score
-from Keras_model import *
+# from Keras_model import *
+from Denoise_GMM import *
 
 def get_machine_ids(machines, mode):
 	mid_dict = {}
@@ -37,6 +38,7 @@ def read_train(m, mid, mode):
 	for f in files:
 		iv = pd.read_csv(path + f, names = ['iv'])
 		X.append(list(iv['iv']))
+	X = TRAIN_DENOISE(X)
 	return np.array(X)
 
 def read_test(m, mid, mode):
@@ -99,17 +101,19 @@ def main(mode):
 
 				anom_scores_ensemble[m][mid] = {}
 
-				X_train_old = read_train(m, mid, mode)
-				X_train_dim = X_train_old.ndim
-				X_train =get_model(X_train_dim)
-				X_test_old, Y_test_old = read_test(m, mid, mode)
-				X_test_dim = X_test_old.ndim
-				Y_test_dim = Y_test_old.ndim
-				X_test = get_model(X_test_dim)
-				Y_test = get_model(X_test_dim)
-				X_train = np.array(X_train)
-				X_test = np.array(X_test)
-				print(X_train.shape)
+				# X_train_old = read_train(m, mid, mode)
+				# X_train_dim = X_train_old.ndim
+				# X_train =get_model(X_train_dim)
+				# X_test_old, Y_test_old = read_test(m, mid, mode)
+				# X_test_dim = X_test_old.ndim
+				# Y_test_dim = Y_test_old.ndim
+				# X_test = get_model(X_test_dim)
+				# Y_test = get_model(X_test_dim)
+				# X_train = np.array(X_train)
+				# X_test = np.array(X_test)
+				# print(X_train.shape)
+				X_train = read_train(m, mid, mode)
+				X_test, y_test = read_test(m, mid, mode)
 				y_pred_iv = GMM(X_train, X_test)
 
 				AUC = roc_auc_score(y_test, y_pred_iv)
@@ -149,13 +153,15 @@ def main(mode):
 				anom_scores_ensemble[m][mid] = {}
 				anom_scores = {'file':[], 'anomaly_score':[]}
 
-				X_train_old = read_train(m, mid, mode)
-				X_train_dim = X_train_old.ndim
-				X_train = get_model(X_train_dim)
-				X_test_old, eval_files_old = read_test(m, mid, mode)
-				X_test_dim = X_test_old.ndim
-				X_test = get_model(X_test_dim)
-				eval_files = get_model(X_test_dim)
+				# X_train_old = read_train(m, mid, mode)
+				# X_train_dim = X_train_old.ndim
+				# X_train = get_model(X_train_dim)
+				# X_test_old, eval_files_old = read_test(m, mid, mode)
+				# X_test_dim = X_test_old.ndim
+				# X_test = get_model(X_test_dim)
+				# eval_files = get_model(X_test_dim)
+				X_train = read_train(m, mid, mode)
+				X_test, eval_files = read_test(m, mid, mode)
 
 				y_pred_iv = GMM(X_train, X_test)
 				anom_scores['file'] = eval_files
