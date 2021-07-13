@@ -107,6 +107,8 @@ def main(mode):
 				Y_test_dim = Y_test_old.ndim
 				X_test = get_model(X_test_dim)
 				Y_test = get_model(X_test_dim)
+				X_train = X_train.astype("float32")
+				X_test = X_test.astype("float32")
 				y_pred_iv = GMM(X_train, X_test)
 
 				AUC = roc_auc_score(y_test, y_pred_iv)
