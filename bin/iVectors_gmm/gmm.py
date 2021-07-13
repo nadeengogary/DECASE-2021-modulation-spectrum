@@ -39,7 +39,7 @@ def read_train(m, mid, mode):
 		iv = pd.read_csv(path + f, names = ['iv'])
 		X.append(list(iv['iv']))
 	X = TRAIN_DENOISE(np.array(X))
-	return X
+	return np.array(X)
 
 def read_test(m, mid, mode):
 	X, y = [], []
