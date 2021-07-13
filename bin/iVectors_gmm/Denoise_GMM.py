@@ -49,4 +49,4 @@ def TRAIN_DENOISE(X):
     # fit the model
     # hist = model.fit(X_train, y_train, batch_size=512, epochs=100, verbose=1, validation_data=([X_val], [y_val]),
     #                  callbacks=[tensorboard])
-return OutputLayer
+    return OutputLayer
