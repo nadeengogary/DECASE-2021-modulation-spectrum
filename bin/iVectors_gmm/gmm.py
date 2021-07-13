@@ -109,6 +109,7 @@ def main(mode):
 				Y_test = get_model(X_test_dim)
 				X_train = np.array(X_train)
 				X_test = np.array(X_test)
+				print(X_train.shape)
 				y_pred_iv = GMM(X_train, X_test)
 
 				AUC = roc_auc_score(y_test, y_pred_iv)
