@@ -38,7 +38,7 @@ def read_train(m, mid, mode):
 	for f in files:
 		iv = pd.read_csv(path + f, names = ['iv'])
 		X.append(list(iv['iv']))
-	X = TRAIN_DENOISE(np.array(X))
+	X = TRAIN_DENOISE(X)
 	# X = get_model(np.array(X))
 	return np.array(X)
 
