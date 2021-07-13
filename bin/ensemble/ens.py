@@ -34,7 +34,7 @@ def get_test_files(m, mid, mode):
 		anom_test_files = ([file for file in test_files if (file[0] == 'a' and int(file.split('_')[2]) == mid and file[-4:] == '.wav')])
 		normal_test_files.sort()
 		anom_test_files.sort()
-		for sample in normal_test_files:	
+		for sample in normal_test_files:
 			y.append(0)
 		for sample in anom_test_files:
 			y.append(1)
@@ -49,9 +49,9 @@ def get_test_files(m, mid, mode):
 def main(mode):
 
 	machines = [
-# 		'ToyCar', 'ToyConveyor', 'fan',
+		'ToyCar', 'ToyConveyor', 'fan',
 		    'pump'
-# 		    , 'slider', 'valve'
+		    , 'slider', 'valve'
 		   ]
 
 	if mode == 'd':
@@ -80,15 +80,15 @@ def main(mode):
 
 				AUC = roc_auc_score(y_test, y_pred_ens)
 				pAUC = roc_auc_score(y_test, y_pred_ens, max_fpr = 0.1)
-				
+
 				results['Machine'].append(m)
 				results['Mid'].append(mid)
 				results['AUC'].append(AUC)
 				results['pAUC'].append(pAUC)
-				
+
 				avg['AUC'].append(AUC)
 				avg['pAUC'].append(pAUC)
-			
+
 			results['Machine'].append(m)
 			results['Mid'].append('Average')
 			results['AUC'].append(np.mean(avg['AUC']))
