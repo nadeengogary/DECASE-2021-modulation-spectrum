@@ -41,11 +41,11 @@ def TRAIN_DENOISE(X):
     opt = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7, decay=0.0001, amsgrad=False)
     # loss = p_loss(OutputLayer,K.placeholder())
     model.compile(loss='mse', optimizer=opt)
-    # Y = model.predict(X)
+    Y = model.predict(X)
     # plot_model(model, to_file='model.png', show_shapes=True, show_layer_names=True)
     # model.summary()
 
     # tensorboard = TensorBoard(log_dir="./logs", histogram_freq=0, write_graph=True, write_images=True)
     # fit the model
     # hist = model.fit(X, batch_size=512, epochs=100, verbose=1)
-    return model.outputs
+    return Y
