@@ -70,7 +70,8 @@ def read_test(m, mid, mode):
 			iv = pd.read_csv(path + f, names = ['iv'])
 			X.append(list(iv['iv']))
 		files = [f[:-4]+'.wav' for f in files]
-		return np.array(X), files
+		X = TRAIN_DENOISE(np.array(X))
+		return X, files
 
 def GMM(X_train, X_test):
 	clf = mixture.GaussianMixture(n_components = 10, covariance_type='full', random_state = 42).fit(X_train)
