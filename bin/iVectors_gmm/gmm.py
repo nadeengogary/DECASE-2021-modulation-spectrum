@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from sklearn import mixture
 from sklearn.metrics import roc_auc_score
-# from Keras_model import *
+from Keras_model import *
 from Denoise_GMM import *
 
 def get_machine_ids(machines, mode):
@@ -38,8 +38,8 @@ def read_train(m, mid, mode):
 	for f in files:
 		iv = pd.read_csv(path + f, names = ['iv'])
 		X.append(list(iv['iv']))
-	X = TRAIN_DENOISE(np.array(X))
-
+	# X = TRAIN_DENOISE(np.array(X))
+	X = get_model(np.array(X))
 	return X
 
 def read_test(m, mid, mode):
@@ -70,7 +70,8 @@ def read_test(m, mid, mode):
 			iv = pd.read_csv(path + f, names = ['iv'])
 			X.append(list(iv['iv']))
 		files = [f[:-4]+'.wav' for f in files]
-		X = TRAIN_DENOISE(np.array(X))
+		# X = TRAIN_DENOISE(np.array(X))
+		X = get_model(np.array(X))
 		return X, files
 
 def GMM(X_train, X_test):
