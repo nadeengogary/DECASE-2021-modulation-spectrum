@@ -7,9 +7,9 @@ from keras.initializers import he_normal
 from keras.models import model_from_json
 from keras import optimizers
 
-def TRAIN_DENOISE(X,y):
+def TRAIN_DENOISE(X):
     n_input_dim = X.shape[1]
-    n_output_dim = y_train.shape[1]
+    # n_output_dim = y_train.shape[1]
 
     n_hidden1 = 2049
     n_hidden2 = 500
@@ -35,7 +35,7 @@ def TRAIN_DENOISE(X,y):
     HiddenLayer1__2 = BatchNormalization(axis=1, momentum=0.6)(HiddenLayer1__1)
     HiddenLayer1__3 = Dropout(0.1)(HiddenLayer1__2)
 
-    OutputLayer = Dense(n_output_dim, name="OutputLayer", kernel_initializer=he_normal(seed=62))(HiddenLayer1__3)
+    OutputLayer = Dense(n_input_dim, name="OutputLayer", kernel_initializer=he_normal(seed=62))(HiddenLayer1__3)
 
     model = Model(inputs=[InputLayer1], outputs=[OutputLayer])
     opt = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7, decay=0.0001, amsgrad=False)
