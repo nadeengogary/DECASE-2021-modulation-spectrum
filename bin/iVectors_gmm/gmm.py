@@ -40,7 +40,7 @@ def read_train(m, mid, mode):
 		X.append(list(iv['iv']))
 	X = TRAIN_DENOISE(np.array(X))
 
-	return X.predict()
+	return X
 
 def read_test(m, mid, mode):
 	X, y = [], []
