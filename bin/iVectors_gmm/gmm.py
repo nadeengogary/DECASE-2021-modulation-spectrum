@@ -40,7 +40,7 @@ def read_train(m, mid, mode):
 		X.append(list(iv['iv']))
 	X = TRAIN_DENOISE(np.array(X))
 
-	return np.array(X)
+	return X
 
 def read_test(m, mid, mode):
 	X, y = [], []
@@ -71,7 +71,7 @@ def read_test(m, mid, mode):
 			X.append(list(iv['iv']))
 		files = [f[:-4]+'.wav' for f in files]
 		X = TRAIN_DENOISE(np.array(X))
-		return np.array(X), files
+		return X, files
 
 def GMM(X_train, X_test):
 	clf = mixture.GaussianMixture(n_components = 10, covariance_type='full', random_state = 42).fit(X_train)
