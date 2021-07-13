@@ -43,10 +43,10 @@ def TRAIN_DENOISE(X):
     model.compile(loss='mse', optimizer=opt)
 
     # plot_model(model, to_file='model.png', show_shapes=True, show_layer_names=True)
-    # model.summary()
+    model.summary()
 
-    # tensorboard = TensorBoard(log_dir="./logs", histogram_freq=0, write_graph=True, write_images=True)
+    tensorboard = TensorBoard(log_dir="./logs", histogram_freq=0, write_graph=True, write_images=True)
     # fit the model
-    # hist = model.fit(X_train, y_train, batch_size=512, epochs=100, verbose=1, validation_data=([X_val], [y_val]),
-    #                  callbacks=[tensorboard])
-    return OutputLayer
+    hist = model.fit(X_train, batch_size=512, epochs=100, verbose=1, validation_data=([X_val], [y_val]),
+                    callbacks=[tensorboard])
+    return model
