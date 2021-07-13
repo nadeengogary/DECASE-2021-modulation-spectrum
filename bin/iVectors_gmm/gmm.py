@@ -60,10 +60,11 @@ def read_test(m, mid, mode):
 			iv = pd.read_csv(path + f, names = ['iv'])
 			X.append(list(iv['iv']))
 			y.append(1)
-		X = TRAIN_DENOISE(np.array(X))
-		y = TRAIN_DENOISE(np.array(y))
+		# X = TRAIN_DENOISE(np.array(X))
+		# y = TRAIN_DENOISE(np.array(y))
 		# X = get_model(np.array(X))
-		return X,y
+		# return X,y
+		return np.array(X), np.array(y)
 	elif mode == 'e':
 		path = '../../saved_iVectors/ivector_mfcc_100/{}/test_eval/'.format(m)
 		files = os.listdir(path)
@@ -73,9 +74,9 @@ def read_test(m, mid, mode):
 			iv = pd.read_csv(path + f, names = ['iv'])
 			X.append(list(iv['iv']))
 		files = [f[:-4]+'.wav' for f in files]
-		X = TRAIN_DENOISE(np.array(X))
+		# X = TRAIN_DENOISE(np.array(X))
 		# X = get_model(np.array(X))
-		return X, files
+		return np.array(X), files
 
 def GMM(X_train, X_test):
 	clf = mixture.GaussianMixture(n_components = 10, covariance_type='full', random_state = 42).fit(X_train)
