@@ -48,9 +48,11 @@ def get_model(X):
 
     h = Dense(inputDim)(h)
     model = Model(inputs=inputLayer, outputs=h)
+    # h.reshape(X.shape)
     # model.compile()
-    return model.predict(X)
+    # return model.predict(X)
     # return Model(inputs=inputLayer, outputs=h)
+    return h
 
 def load_model(file_path):
     return keras.models.load_model(file_path)
