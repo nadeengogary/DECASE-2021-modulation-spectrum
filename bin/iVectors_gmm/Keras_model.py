@@ -8,7 +8,7 @@ from keras import backend as K
 ########################################################################
 def get_model(X):
     # inputDim = X.shape[1]
-    inputLayer = Input(shape=(inputDim,))
+    inputLayer = Input(shape=(X,))
 
     h = Dense(128)(inputLayer)
     h = BatchNormalization()(h)
