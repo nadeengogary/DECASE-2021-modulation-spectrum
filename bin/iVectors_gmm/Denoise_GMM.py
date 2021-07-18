@@ -43,7 +43,7 @@ def TRAIN_DENOISE(X):
 
     # Y = OutputLayer.reshape(X.shape)
     # plot_model(model, to_file='model.png', show_shapes=True, show_layer_names=True)
-    model.summary()
+    # model.summary()
 
     tensorboard = TensorBoard(log_dir="./logs", histogram_freq=0, write_graph=True, write_images=True)
     # fit the model
@@ -51,4 +51,4 @@ def TRAIN_DENOISE(X):
 
     hist = model.fit(X, batch_size=512, epochs=100, verbose=1)
     Y = model.predict(X)
-    return Y
+    return np.array(Y)
