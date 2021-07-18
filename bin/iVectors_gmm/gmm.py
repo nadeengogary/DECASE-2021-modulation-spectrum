@@ -38,7 +38,7 @@ def read_train(m, mid, mode):
 	for f in files:
 		iv = pd.read_csv(path + f, names = ['iv'])
 		X.append(list(iv['iv']))
-	X = TRAIN_DENOISE(np.array(X))
+	# X = TRAIN_DENOISE(np.array(X))
 	# X = get_model(X)
 	return X
 
@@ -60,8 +60,8 @@ def read_test(m, mid, mode):
 			iv = pd.read_csv(path + f, names = ['iv'])
 			X.append(list(iv['iv']))
 			y.append(1)
-		X = TRAIN_DENOISE(np.array(X))
-		y = TRAIN_DENOISE(np.array(y))
+		# X = TRAIN_DENOISE(np.array(X))
+		# y = TRAIN_DENOISE(np.array(y))
 		# X = get_model(X)
 		# return X,y
 		return X, y
@@ -74,7 +74,7 @@ def read_test(m, mid, mode):
 			iv = pd.read_csv(path + f, names = ['iv'])
 			X.append(list(iv['iv']))
 		files = [f[:-4]+'.wav' for f in files]
-		X = TRAIN_DENOISE(np.array(X))
+		# X = TRAIN_DENOISE(np.array(X))
 		# X = get_model(X)
 		return X, files
 
@@ -121,6 +121,9 @@ def main(mode):
 				# print(X_train.shape)
 				X_train = read_train(m, mid, mode)
 				X_test, y_test = read_test(m, mid, mode)
+				X_train = TRAIN_DENOISE(np.array(X_train))
+				X_test = TRAIN_DENOISE(np.array(X_test))
+				y_test = TRAIN_DENOISE(np.array(y_test))
 				y_pred_iv = GMM(X_train, X_test)
 
 				AUC = roc_auc_score(y_test, y_pred_iv)
