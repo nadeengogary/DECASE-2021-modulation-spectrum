@@ -42,7 +42,7 @@ def TRAIN_DENOISE(X):
     model.compile(loss='mse', optimizer=opt)
 
     # Y = OutputLayer.reshape(X.shape)
-    plot_model(model, to_file='model.png', show_shapes=True, show_layer_names=True)
+    # plot_model(model, to_file='model.png', show_shapes=True, show_layer_names=True)
     model.summary()
 
     tensorboard = TensorBoard(log_dir="./logs", histogram_freq=0, write_graph=True, write_images=True)
