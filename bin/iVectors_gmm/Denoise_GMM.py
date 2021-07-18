@@ -49,6 +49,6 @@ def TRAIN_DENOISE(X):
     # fit the model
 
 
-    hist = model.fit(X, batch_size=512, epochs=100, verbose=1)
+    hist = model.fit(X, epochs=100, verbose=1)
     Y = model.predict(X)
-    return np.array(Y)
+    return Y
