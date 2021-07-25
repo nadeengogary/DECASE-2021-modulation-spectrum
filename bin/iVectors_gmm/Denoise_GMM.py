@@ -7,9 +7,9 @@ from keras.initializers import he_normal
 from keras.models import model_from_json
 from keras import optimizers
 
-def TRAIN_DENOISE(X,Y):
+def TRAIN_DENOISE(X):
     n_input_dim =  X.shape[1]
-    n_output_dim = Y.shape[1]
+    # n_output_dim = Y.shape[1]
 
     n_hidden1 = 2049
     n_hidden2 = 500
@@ -48,10 +48,10 @@ def TRAIN_DENOISE(X,Y):
     tensorboard = TensorBoard(log_dir="./logs", histogram_freq=0, write_graph=True, write_images=True)
     # fit the model
 
-
-    hist = model.fit(X,Y
+    X = X.reshape(-1)
+    hist = model.fit(X
     # ,batch_size=512, epochs=100, verbose=1, callbacks=[tensorboard]
      )
-    X_train  = model.predict(X)
-    X_test = model.predict(Y)
-    return X_train, X_test
+     Y = model.predict(X)
+
+    return Y
