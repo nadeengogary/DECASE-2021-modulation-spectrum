@@ -52,6 +52,6 @@ def TRAIN_DENOISE(X):
     hist = model.fit(X
     # ,batch_size=512, epochs=100, verbose=1, callbacks=[tensorboard]
      )
-     Y = model.predict(X)
+    Y = model.predict(X)
 
     return Y
