@@ -40,7 +40,7 @@ def read_train(m, mid, mode):
 		X.append(list(iv['iv']))
 	# X = TRAIN_DENOISE(np.array(X))
 	# X = get_model(X)
-	return X
+	return np.array(X)
 
 def read_test(m, mid, mode):
 	X, y = [], []
@@ -122,7 +122,7 @@ def main(mode):
 				X_train = read_train(m, mid, mode)
 				X_test, y_test = read_test(m, mid, mode)
 				print(X_train.shape())
-				X_train = TRAIN_DENOISE(np.array(X_train))
+				X_train = TRAIN_DENOISE(X_train)
 				X_test = TRAIN_DENOISE(np.array(X_test))
 				y_test = TRAIN_DENOISE(np.array(y_test))
 				y_pred_iv = GMM(X_train, X_test)
