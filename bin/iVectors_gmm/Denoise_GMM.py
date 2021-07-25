@@ -8,7 +8,8 @@ from keras.models import model_from_json
 from keras import optimizers
 
 def TRAIN_DENOISE(X):
-    n_input_dim =  X.shape[1]
+    X = X.reshape(-1)
+    n_input_dim = X.shape
     # n_output_dim = Y.shape[1]
 
     n_hidden1 = 2049
