@@ -121,7 +121,7 @@ def main(mode):
 				# print(X_train.shape)
 				X_train = read_train(m, mid, mode)
 				X_test, y_test = read_test(m, mid, mode)
-				print(X_train.shape())
+				print(X_train.shape)
 				X_train = TRAIN_DENOISE(X_train)
 				X_test = TRAIN_DENOISE(np.array(X_test))
 				y_test = TRAIN_DENOISE(np.array(y_test))
