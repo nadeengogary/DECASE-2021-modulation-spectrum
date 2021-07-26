@@ -6,6 +6,7 @@ import pandas as pd
 import networkx as nx
 from utils import *
 from sklearn.metrics import roc_auc_score
+from Denoise_GMM import *
 
 
 def build_net(X_train):
@@ -74,7 +75,7 @@ def main(mode):
             for mid in mid_dict[m]:
 
                 anom_scores_ensemble[m][mid] = {}
-
+                X_train = TRAIN_DENOISE(X_train)
                 X_train, X_test, y_test = get_spectrums(
                     m, mid, reducenoise, mode)
 

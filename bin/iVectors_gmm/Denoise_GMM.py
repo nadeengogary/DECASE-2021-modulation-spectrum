@@ -50,7 +50,7 @@ def TRAIN_DENOISE(X):
     # fit the model
 
     # X = X.reshape(-1)
-    print(X.shape[0])
+    # print(X.shape[0])
     # hist = model.fit(x=X , y=None
     # ,batch_size=512, epochs=100, verbose=1, callbacks=[tensorboard]
      # )
