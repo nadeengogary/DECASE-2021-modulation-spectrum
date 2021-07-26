@@ -75,10 +75,10 @@ def main(mode):
             for mid in mid_dict[m]:
 
                 anom_scores_ensemble[m][mid] = {}
-                X_train = TRAIN_DENOISE(X_train)
+                
                 X_train, X_test, y_test = get_spectrums(
                     m, mid, reducenoise, mode)
-
+                X_train = TRAIN_DENOISE(X_train)
                 subgraphs, Graph = build_net(X_train)
                 means, deviations = get_means(X_train, subgraphs)
                 y_pred_gr = get_anom_score(X_test, means, deviations)
