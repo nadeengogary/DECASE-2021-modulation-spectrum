@@ -9,7 +9,7 @@ from keras import optimizers
 
 def TRAIN_DENOISE(X):
     # X = X.reshape(-1)
-    n_input_dim = X.shape[2]
+    n_input_dim = X.shape[1]
     # n_output_dim = Y.shape[1]
 
     n_hidden1 = 2049
@@ -49,7 +49,7 @@ def TRAIN_DENOISE(X):
     tensorboard = TensorBoard(log_dir="./logs", histogram_freq=0, write_graph=True, write_images=True)
     # fit the model
 
-    # X = X.reshape(-1)
+    X = X.reshape(-1,1)
     # print(X.shape[0])
     hist = model.fit(x=X
     , y=None
