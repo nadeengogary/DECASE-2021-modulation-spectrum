@@ -79,6 +79,7 @@ def read_test(m, mid, mode):
 		return X, files
 
 def GMM(X_train, X_test):
+	X_train = TRAIN_DENOISE(X_train)
 	clf = mixture.GaussianMixture(n_components = 10, covariance_type='full', random_state = 42).fit(X_train)
 	y_pred = clf.score_samples(X_test)
 	y_pred_iv = -1 * y_pred
@@ -121,9 +122,9 @@ def main(mode):
 				# print(X_train.shape)
 				X_train = read_train(m, mid, mode)
 				X_test, y_test = read_test(m, mid, mode)
-				X_train,Y_train = TRAIN_DENOISE(X_train)
-				X_test = TRAIN_DENOISE(np.array(X_test))
-				y_test = TRAIN_DENOISE(np.array(y_test))
+				# X_train,Y_train = TRAIN_DENOISE(X_train)
+				# X_test = TRAIN_DENOISE(np.array(X_test))
+				# y_test = TRAIN_DENOISE(np.array(y_test))
 				y_pred_iv = GMM(X_train, X_test)
 
 				AUC = roc_auc_score(y_test, y_pred_iv)
