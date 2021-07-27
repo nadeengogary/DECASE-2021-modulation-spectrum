@@ -57,8 +57,8 @@ def main(mode):
     machines = [
         'ToyCar', 'ToyConveyor', 'fan',
                 'pump'
-       ,
-                'slider', 'valve'
+       # ,
+                # 'slider', 'valve'
                ]
 
     reducenoise = 80
@@ -85,7 +85,7 @@ def main(mode):
 
                 # y_test = TRAIN_DENOISE(y_test)
                 subgraphs, Graph = build_net(X_train)
-                means, deviations = get_means(X_train_old, subgraphs)
+                means, deviations = get_means(X_train, subgraphs)
 
                 y_pred_gr = get_anom_score(X_test, means, deviations)
 

@@ -16,7 +16,7 @@ def TRAIN_DENOISE(X):
     n_hidden2 = 500
     n_hidden3 = 180
 
-    InputLayer1 = Input(shape=(560,), name="InputLayer")
+    InputLayer1 = Input(shape=(n_input_dim,), name="InputLayer")
     InputLayer2 = BatchNormalization(axis=1, momentum=0.6)(InputLayer1)
 
     HiddenLayer1_1 = Dense(n_hidden1, name="H1", activation='relu', kernel_initializer=he_normal(seed=27))(InputLayer2)
