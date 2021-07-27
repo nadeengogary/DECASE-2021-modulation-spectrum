@@ -80,10 +80,13 @@ def main(mode):
                     m, mid, reducenoise, mode)
                 X_train = TRAIN_DENOISE(X_train_old)
                 X_test = TRAIN_DENOISE(X_test)
+
                 # y_test = TRAIN_DENOISE(y_test)
-                X_train = X_train[:,np.newaxis]
                 subgraphs, Graph = build_net(X_train)
                 means, deviations = get_means(X_train_old, subgraphs)
+                print(X_test.shape)
+                print(means.shape)
+                print(deviations.shape)
                 y_pred_gr = get_anom_score(X_test, means, deviations)
 
                 AUC = roc_auc_score(y_test, y_pred_gr)
