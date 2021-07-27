@@ -49,10 +49,10 @@ def TRAIN_DENOISE(X):
     tensorboard = TensorBoard(log_dir="./logs", histogram_freq=0, write_graph=True, write_images=True)
     # fit the model
 
-    # X = X.reshape(-1,1)
+    X = X.reshape(len(X),-1)
     # X = X.shape[0:1]
     # print(X.shape[0])
-    hist = model.fit(X[0:1]
+    hist = model.fit(X
     # , y=None
     # ,batch_size=512, epochs=100, verbose=1, callbacks=[tensorboard]
      )
