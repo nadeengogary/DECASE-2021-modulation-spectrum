@@ -58,6 +58,6 @@ def TRAIN_DENOISE(X):
     # , y=None
     # ,batch_size=512, epochs=100, verbose=1, callbacks=[tensorboard]
      # )
-    Y = model.predict(X)
+    Y = model.predict(X[0])
 
     return Y
