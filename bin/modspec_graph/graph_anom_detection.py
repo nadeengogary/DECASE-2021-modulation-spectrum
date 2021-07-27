@@ -76,13 +76,13 @@ def main(mode):
 
                 anom_scores_ensemble[m][mid] = {}
 
-                X_train, X_test, y_test = get_spectrums(
+                X_train_old, X_test, y_test = get_spectrums(
                     m, mid, reducenoise, mode)
-                X_train = TRAIN_DENOISE(X_train)
+                X_train = TRAIN_DENOISE(X_train_old)
                 X_test = TRAIN_DENOISE(X_test)
                 # y_test = TRAIN_DENOISE(y_test)
                 subgraphs, Graph = build_net(X_train)
-                means, deviations = get_means(X_train, subgraphs)
+                means, deviations = get_means(X_train_old, subgraphs)
                 y_pred_gr = get_anom_score(X_test, means, deviations)
 
                 AUC = roc_auc_score(y_test, y_pred_gr)
