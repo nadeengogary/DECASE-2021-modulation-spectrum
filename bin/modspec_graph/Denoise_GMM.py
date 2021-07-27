@@ -50,7 +50,7 @@ def TRAIN_DENOISE(X):
     # fit the model
     print(X.shape)
     X = X.reshape(len(X),-1)
-    print(X.shape)
+    print(X.shape[0])
 
     # X = X.shape[0:1]
     # print(X.shape[0])
