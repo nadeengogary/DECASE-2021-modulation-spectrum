@@ -45,7 +45,6 @@ def get_anom_score(X_test, means, deviations):
     y_pred = []
     for sample in X_test:
         print(sample.shape)
-        print(deviations)
 
         pred = np.min([np.sum((np.abs(sample - means[i])/deviations[i]))
                       for i in means])
