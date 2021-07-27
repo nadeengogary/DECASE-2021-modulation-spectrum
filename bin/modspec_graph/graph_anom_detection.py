@@ -81,7 +81,7 @@ def main(mode):
                 X_train_old, X_test, y_test = get_spectrums(
                     m, mid, reducenoise, mode)
                 X_train = TRAIN_DENOISE(X_train_old)
-                X_test = TRAIN_DENOISE(X_test)
+                # X_test = TRAIN_DENOISE(X_test)
 
                 # y_test = TRAIN_DENOISE(y_test)
                 subgraphs, Graph = build_net(X_train)
