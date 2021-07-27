@@ -44,6 +44,7 @@ def get_means(X_train, subgraphs):
 def get_anom_score(X_test, means, deviations):
     y_pred = []
     for sample in X_test:
+        print(sample.shape)
         pred = np.min([np.sum((np.abs(sample - means[i])/deviations[i]))
                       for i in means])
         y_pred.append(pred)
@@ -85,7 +86,6 @@ def main(mode):
                 subgraphs, Graph = build_net(X_train)
                 means, deviations = get_means(X_train_old, subgraphs)
                 print(X_test.shape)
-                print(deviations.shape)
                 y_pred_gr = get_anom_score(X_test, means, deviations)
 
                 AUC = roc_auc_score(y_test, y_pred_gr)
