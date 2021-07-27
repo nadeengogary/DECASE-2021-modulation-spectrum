@@ -44,7 +44,7 @@ def get_means(X_train, subgraphs):
 def get_anom_score(X_test, means, deviations):
     y_pred = []
     for sample in X_test:
-        print(sample.shape)
+
 
         pred = np.min([np.sum((np.abs(sample - means[i])/deviations[i]))
                       for i in means])
@@ -80,13 +80,13 @@ def main(mode):
 
                 X_train_old, X_test, y_test = get_spectrums(
                     m, mid, reducenoise, mode)
-                X_train = TRAIN_DENOISE(X_train_old)
+                X_train = TRAIN_DENOISE(np.array(X_train_old))
                 # X_test = TRAIN_DENOISE(X_test)
 
                 # y_test = TRAIN_DENOISE(y_test)
                 subgraphs, Graph = build_net(X_train)
                 means, deviations = get_means(X_train_old, subgraphs)
-                print(X_test.shape)
+
                 y_pred_gr = get_anom_score(X_test, means, deviations)
 
                 AUC = roc_auc_score(y_test, y_pred_gr)
