@@ -52,7 +52,7 @@ def TRAIN_DENOISE(X):
     print(X.shape)
     # print(X.shape)
     # X = X.T
-
+    X = X.reshape(len(X),-1)
     # X = X.shape[0:1]
     # print(X.shape[0])
     # hist = model.fit(X
