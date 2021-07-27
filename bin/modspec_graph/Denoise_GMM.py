@@ -10,7 +10,7 @@ from keras import optimizers
 def TRAIN_DENOISE(X):
     # X = X.reshape(-1)
     print(X.shape)
-    n,m = X.shape
+    n,m,s = X.shape
     X = X.reshape(len(X),-1)
     n_input_dim = X.shape[1]
     # n_output_dim = Y.shape[1]
@@ -55,7 +55,7 @@ def TRAIN_DENOISE(X):
     # X = X.T
     X = X.reshape(len(X),-1)
     print(X.shape)
-    X.reshape(n,m) == X
+    X.reshape(n,m,s) == X
     print(X.shape)
     # X = X.shape[0:1]
     # print(X.shape[0])
