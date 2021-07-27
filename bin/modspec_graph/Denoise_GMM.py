@@ -55,8 +55,7 @@ def TRAIN_DENOISE(X):
     # X = X.T
     X = X.reshape(len(X),-1)
     print(X.shape)
-    X.reshape(n,m,s) == X
-    print(X.shape)
+    
     # X = X.shape[0:1]
     # print(X.shape[0])
     # hist = model.fit(X
@@ -64,5 +63,6 @@ def TRAIN_DENOISE(X):
     # ,batch_size=512, epochs=100, verbose=1, callbacks=[tensorboard]
      # )
     Y = model.predict(X)
+    X.reshape(n,m,s) == Y
     print(Y.shape)
     return Y
