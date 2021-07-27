@@ -85,7 +85,6 @@ def main(mode):
                 subgraphs, Graph = build_net(X_train)
                 means, deviations = get_means(X_train_old, subgraphs)
                 print(X_test.shape)
-                print(means.shape)
                 print(deviations.shape)
                 y_pred_gr = get_anom_score(X_test, means, deviations)
 
