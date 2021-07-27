@@ -80,7 +80,7 @@ def main(mode):
                     m, mid, reducenoise, mode)
                 X_train = TRAIN_DENOISE(X_train)
                 X_test = TRAIN_DENOISE(X_test)
-                y_test = TRAIN_DENOISE(y_test)
+                # y_test = TRAIN_DENOISE(y_test)
                 subgraphs, Graph = build_net(X_train)
                 means, deviations = get_means(X_train, subgraphs)
                 y_pred_gr = get_anom_score(X_test, means, deviations)
