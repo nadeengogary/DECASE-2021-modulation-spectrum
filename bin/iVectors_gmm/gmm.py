@@ -80,6 +80,7 @@ def read_test(m, mid, mode):
 
 def GMM(X_train, X_test):
 	# X_train = TRAIN_DENOISE(X_train)
+	X_train = get_model(X_train)
 	clf = mixture.GaussianMixture(n_components = 10, covariance_type='full', random_state = 42).fit(X_train)
 	y_pred = clf.score_samples(X_test)
 	y_pred_iv = -1 * y_pred
