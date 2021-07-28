@@ -2,7 +2,7 @@ import keras.models
 from keras.models import Model
 from keras.layers import Input, Dense, BatchNormalization, Activation, Multiply
 from keras import backend as K
-
+from keras import optimizers
 ########################################################################
 # keras model
 ########################################################################
