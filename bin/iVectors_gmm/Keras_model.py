@@ -7,7 +7,7 @@ from keras import backend as K
 # keras model
 ########################################################################
 def get_model(X):
-    n,m,s = X.shape
+    n,m = X.shape
     X = X.reshape(len(X),-1)
     inputDim = X.shape[1]
     inputLayer = Input(shape=(inputDim,))
@@ -55,6 +55,7 @@ def get_model(X):
     # return model.predict(X)
     # return Model(inputs=inputLayer, outputs=h)
     Y = model.predict(X)
+    Y = Y.reshape(n,m)
     return Y
 
 def load_model(file_path):
