@@ -55,8 +55,8 @@ def get_anom_score(X_test, means, deviations):
 def main(mode):
 
     machines = [
-        'ToyCar', 'ToyConveyor', 'fan'
-#                 'pump'
+        'ToyCar', 'ToyConveyor', 'fan',
+                'pump'
        # ,
 #                 'slider', 'valve'
                ]
