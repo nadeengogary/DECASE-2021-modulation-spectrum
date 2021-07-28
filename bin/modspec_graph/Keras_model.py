@@ -7,7 +7,7 @@ from keras import optimizers
 # keras model
 ########################################################################
 def get_model(X):
-    n,m = X.shape
+    n,m,s = X.shape
     X = X.reshape(len(X),-1)
     inputDim = X.shape[1]
     inputLayer = Input(shape=(inputDim,))
@@ -58,7 +58,7 @@ def get_model(X):
     # model.compile(loss='mse', optimizer=opt)
     # model.fit(X)
     Y = model.predict(X)
-    Y = Y.reshape(n,m)
+    Y = Y.reshape(n,m,s)
     return Y
 
 def load_model(file_path):
