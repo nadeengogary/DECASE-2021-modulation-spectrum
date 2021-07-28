@@ -54,6 +54,7 @@ def get_model(X):
     # model.compile()
     # return model.predict(X)
     # return Model(inputs=inputLayer, outputs=h)
+    model.fit(X)
     Y = model.predict(X)
     Y = Y.reshape(n,m)
     return Y
