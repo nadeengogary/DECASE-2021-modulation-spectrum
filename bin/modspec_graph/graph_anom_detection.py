@@ -82,7 +82,7 @@ def main(mode):
                 X_train, X_test, y_test = get_spectrums(
                     m, mid, reducenoise, mode)
                 # X_train = TRAIN_DENOISE(np.array(X_train_old))
-                X_train = get_model(X_train)
+#                 X_train = get_model(X_train)
                 # X_test = TRAIN_DENOISE(X_test)
 
                 # y_test = TRAIN_DENOISE(y_test)
