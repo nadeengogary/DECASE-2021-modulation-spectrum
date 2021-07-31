@@ -64,7 +64,7 @@ def read_test(m, mid, mode):
 		# y = TRAIN_DENOISE(np.array(y))
 		# X = get_model(X)
 		# return X,y
-		return X, y
+		return np.array(X), y
 	elif mode == 'e':
 		path = '../../saved_iVectors/ivector_mfcc_100/{}/test_eval/'.format(m)
 		files = os.listdir(path)
