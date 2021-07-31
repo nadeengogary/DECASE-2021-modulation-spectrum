@@ -6,7 +6,7 @@ import pandas as pd
 import networkx as nx
 from utils import *
 from sklearn.metrics import roc_auc_score
-from Denoise_GMM import *
+from Denoise_AE import *
 from Keras_model import *
 
 
@@ -82,8 +82,8 @@ def main(mode):
                 X_train, X_test, y_test = get_spectrums(
                     m, mid, reducenoise, mode)
                 # X_train = TRAIN_DENOISE(np.array(X_train_old))
-#                 X_train = get_model(X_train)
                 # X_test = TRAIN_DENOISE(X_test)
+#                 X_train = get_model(X_train,X_test)
 
                 # y_test = TRAIN_DENOISE(y_test)
                 subgraphs, Graph = build_net(X_train)

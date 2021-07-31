@@ -62,7 +62,11 @@ def TRAIN_DENOISE(X):
     # , y=None
     # ,batch_size=512, epochs=100, verbose=1, callbacks=[tensorboard]
      # )
-    Y = model.predict(X)
-    Y = Y.reshape(n,m,s) 
-    print(Y.shape)
+    # Y = model.predict(X)
+    # Y = Y.reshape(n,m,s)
+    # print(Y.shape)
+    opt = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7, decay=0.0001, amsgrad=False)
+    model.compile(loss='mse', optimizer=opt)
+    model.fit(X,X,shuffle=True,validation_data=(X_test, X_test))
+    Y = model.predict(X_test)
     return Y

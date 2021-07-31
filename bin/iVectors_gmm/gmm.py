@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn import mixture
 from sklearn.metrics import roc_auc_score
 from Keras_model import *
-from Denoise_GMM import *
+from Denoise_AE import *
 
 def get_machine_ids(machines, mode):
 	mid_dict = {}
@@ -79,8 +79,8 @@ def read_test(m, mid, mode):
 		return X, files
 
 def GMM(X_train, X_test):
-	# X_train = TRAIN_DENOISE(X_train)
-	X_train = get_model(X_train,X_test)
+	X_train = TRAIN_DENOISE(X_train)
+	# X_train = get_model(X_train,X_test)
 	clf = mixture.GaussianMixture(n_components = 10, covariance_type='full', random_state = 42).fit(X_train)
 	y_pred = clf.score_samples(X_test)
 	y_pred_iv = -1 * y_pred
@@ -91,8 +91,8 @@ def main(mode):
 
 	machines = [
 		'ToyCar', 'ToyConveyor', 'fan',
-		'pump'
-		, 'slider', 'valve'
+		# 'pump'
+		# , 'slider', 'valve'
 	]
 
 	if mode == 'd':

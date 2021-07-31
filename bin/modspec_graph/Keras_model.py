@@ -6,7 +6,7 @@ from keras import optimizers
 ########################################################################
 # keras model
 ########################################################################
-def get_model(X):
+def get_model(X,X_test):
     n,m,s = X.shape
     X = X.reshape(len(X),-1)
     inputDim = X.shape[1]
@@ -57,8 +57,10 @@ def get_model(X):
     # opt = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7, decay=0.0001, amsgrad=False)
     # model.compile(loss='mse', optimizer=opt)
     # model.fit(X)
-    Y = model.predict(X)
-    Y = Y.reshape(n,m,s)
+    opt = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7, decay=0.0001, amsgrad=False)
+    model.compile(loss='mse', optimizer=opt)
+    model.fit(X,X,shuffle=True,validation_data=(X_test, X_test))
+    Y = model.predict(X_test)
     return Y
 
 def load_model(file_path):
