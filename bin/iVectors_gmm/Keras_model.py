@@ -58,7 +58,7 @@ def get_model(X,X_test):
     model.compile(loss='mse', optimizer=opt)
     model.fit(X,X,shuffle=True,validation_data=(X_test, X_test))
     Y = model.predict(X_test)
-    Y = Y.reshape(n,m)
+    # Y = Y.reshape(n,m)
     return Y
 
 def load_model(file_path):
