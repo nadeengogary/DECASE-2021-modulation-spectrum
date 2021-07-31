@@ -91,7 +91,7 @@ def main(mode):
 
 	machines = [
 		'ToyCar', 'ToyConveyor', 'fan',
-		# 'pump'
+		'pump'
 		# , 'slider', 'valve'
 	]
 
