@@ -54,9 +54,9 @@ def get_model(X):
     # model.compile()
     # return model.predict(X)
     # return Model(inputs=inputLayer, outputs=h)
-    # opt = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7, decay=0.0001, amsgrad=False)
-    # model.compile(loss='mse', optimizer=opt)
-    # model.fit(X)
+    opt = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7, decay=0.0001, amsgrad=False)
+    model.compile(loss='mse', optimizer=opt)
+    model.fit(X)
     Y = model.predict(X)
     Y = Y.reshape(n,m)
     return Y
