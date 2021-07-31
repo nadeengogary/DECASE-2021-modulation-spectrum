@@ -92,7 +92,7 @@ def main(mode):
 	machines = [
 		'ToyCar', 'ToyConveyor', 'fan',
 		'pump'
-		# , 'slider', 'valve'
+		, 'slider', 'valve'
 	]
 
 	if mode == 'd':
