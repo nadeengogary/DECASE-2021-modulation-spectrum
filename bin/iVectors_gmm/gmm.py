@@ -132,7 +132,7 @@ def main(mode):
 				# X_train = np.array(X_train)
 				# X_test = np.array(X_test)
 				# print(X_train.shape)
-				X_train = read_train(m, mid, mode)
+				X_train,y_train = read_train(m, mid, mode)
 				X_test, y_test = read_test(m, mid, mode)
 				# X_train,Y_train = TRAIN_DENOISE(X_train)
 				# X_test = TRAIN_DENOISE(np.array(X_test))
@@ -183,7 +183,7 @@ def main(mode):
 				# X_test_dim = X_test_old.ndim
 				# X_test = get_model(X_test_dim)
 				# eval_files = get_model(X_test_dim)
-				X_train,y_train = read_train(m, mid, mode)
+				X_train = read_train(m, mid, mode)
 				X_test, eval_files = read_test(m, mid, mode)
 
 				y_pred_iv = GMM(X_train, X_test,y_train)
