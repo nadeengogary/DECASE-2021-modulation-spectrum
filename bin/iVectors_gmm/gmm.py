@@ -137,7 +137,7 @@ def main(mode):
 				# X_train,Y_train = TRAIN_DENOISE(X_train)
 				# X_test = TRAIN_DENOISE(np.array(X_test))
 				# y_test = TRAIN_DENOISE(np.array(y_test))
-				y_pred_iv = GMM(X_train, X_test, y_test)
+				y_pred_iv = GMM(X_train, X_test, y_train)
 
 				AUC = roc_auc_score(y_test, y_pred_iv)
 				pAUC = roc_auc_score(y_test, y_pred_iv, max_fpr = 0.1)
@@ -186,7 +186,7 @@ def main(mode):
 				X_train = read_train(m, mid, mode)
 				X_test, eval_files = read_test(m, mid, mode)
 
-				y_pred_iv = GMM(X_train, X_test,y_train)
+				y_pred_iv = GMM(X_train, X_test)
 				anom_scores['file'] = eval_files
 				anom_scores['anomaly_score'] = y_pred_iv
 				anom_scores_ensemble[m][mid]['iv'] = y_pred_iv
