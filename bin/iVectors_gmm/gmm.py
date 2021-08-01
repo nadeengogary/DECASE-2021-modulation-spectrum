@@ -88,6 +88,7 @@ def GMM(X_train, X_test, y_train):
 	# X_train = get_model(X_train,X_test)
 	# clf = mixture.GaussianMixture(n_components = 10, covariance_type='full', random_state = 42).fit(X_train)
 	# y_pred = clf.score_samples(X_test)
+	X_train = X_train.shape[1]
 	scaler = preprocessing.StandardScaler().fit(X_train)
 	X_train_transformed = scaler.transform(X_train)
 	clf = svm.SVC(C=1).fit(X_train_transformed, y_train)
