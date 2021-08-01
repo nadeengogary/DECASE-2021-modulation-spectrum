@@ -52,8 +52,9 @@ def TRAIN_DENOISE(X,X_test):
     tensorboard = TensorBoard(log_dir="./logs", histogram_freq=0, write_graph=True, write_images=True)
     # fit the model
     print(X.shape)
-    # X = X.T
+
     X = X.reshape(len(X),-1)
+    X = X.T
     print(X.shape)
 
     # X = X.shape[0:1]
