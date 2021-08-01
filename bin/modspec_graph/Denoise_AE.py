@@ -54,7 +54,7 @@ def TRAIN_DENOISE(X,X_test):
     print(X.shape)
 
     X = X.reshape(len(X),-1)
-    X = X.T
+    # X = X.T
     print(X.shape)
 
     # X = X.shape[0:1]
@@ -66,8 +66,8 @@ def TRAIN_DENOISE(X,X_test):
     # Y = model.predict(X)
     # Y = Y.reshape(n,m,s)
     # print(Y.shape)
-    opt = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7, decay=0.0001, amsgrad=False)
-    model.compile(loss='mse', optimizer=opt)
+    # opt = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7, decay=0.0001, amsgrad=False)
+    # model.compile(loss='mse', optimizer=opt)
     model.fit(X,X,shuffle=True,validation_data=(X_test, X_test))
     Y = model.predict(X_test)
     return Y
