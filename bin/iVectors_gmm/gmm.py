@@ -31,7 +31,7 @@ def get_machine_ids(machines, mode):
 	return mid_dict
 
 def read_train(m, mid, mode):
-	X = []
+	X,y = [],[]
 	if mode == 'd':
 		path = '../../saved_iVectors/ivector_mfcc_100/{}/train/'.format(m)
 	elif mode == 'e':
