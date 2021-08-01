@@ -59,7 +59,7 @@ def get_model(X,X_test):
     # model.fit(X)
     opt = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7, decay=0.0001, amsgrad=False)
     model.compile(loss='mse', optimizer=opt)
-    model.fit(X[0:1],X,shuffle=True,validation_data=(X_test, X_test))
+    model.fit(X[0:1],X[0:1],shuffle=True,validation_data=(X_test, X_test))
     Y = model.predict(X_test)
     return Y
 
