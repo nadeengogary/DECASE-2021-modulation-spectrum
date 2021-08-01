@@ -7,7 +7,7 @@ from keras.initializers import he_normal
 from keras.models import model_from_json
 from keras import optimizers
 
-def TRAIN_DENOISE(X):
+def TRAIN_DENOISE(X,X_test):
     # X = X.reshape(-1)
     print(X.shape)
     n,m,s = X.shape

@@ -38,8 +38,8 @@ def read_train(m, mid, mode):
 	for f in files:
 		iv = pd.read_csv(path + f, names = ['iv'])
 		X.append(list(iv['iv']))
-	# X = TRAIN_DENOISE(np.array(X))
-	# X = get_model(X)
+
+
 	return np.array(X)
 
 def read_test(m, mid, mode):
@@ -60,10 +60,7 @@ def read_test(m, mid, mode):
 			iv = pd.read_csv(path + f, names = ['iv'])
 			X.append(list(iv['iv']))
 			y.append(1)
-		# X = TRAIN_DENOISE(np.array(X))
-		# y = TRAIN_DENOISE(np.array(y))
-		# X = get_model(X)
-		# return X,y
+
 		return np.array(X), y
 	elif mode == 'e':
 		path = '../../saved_iVectors/ivector_mfcc_100/{}/test_eval/'.format(m)
@@ -74,12 +71,10 @@ def read_test(m, mid, mode):
 			iv = pd.read_csv(path + f, names = ['iv'])
 			X.append(list(iv['iv']))
 		files = [f[:-4]+'.wav' for f in files]
-		# X = TRAIN_DENOISE(np.array(X))
-		# X = get_model(X)
 		return X, files
 
 def GMM(X_train, X_test):
-	# X_train = TRAIN_DENOISE(X_train,X_test)
+	X_train = TRAIN_DENOISE(X_train,X_test)
 	# X_train = get_model(X_train,X_test)
 	clf = mixture.GaussianMixture(n_components = 10, covariance_type='full', random_state = 42).fit(X_train)
 	y_pred = clf.score_samples(X_test)
@@ -90,9 +85,9 @@ def GMM(X_train, X_test):
 def main(mode):
 
 	machines = [
-		'ToyCar', 'ToyConveyor', 'fan',
+		# 'ToyCar', 'ToyConveyor', 'fan',
 		'pump'
-		, 'slider', 'valve'
+		# , 'slider', 'valve'
 	]
 
 	if mode == 'd':
@@ -110,22 +105,8 @@ def main(mode):
 
 				anom_scores_ensemble[m][mid] = {}
 
-				# X_train_old = read_train(m, mid, mode)
-				# X_train_dim = X_train_old.ndim
-				# X_train =get_model(X_train_dim)
-				# X_test_old, Y_test_old = read_test(m, mid, mode)
-				# X_test_dim = X_test_old.ndim
-				# Y_test_dim = Y_test_old.ndim
-				# X_test = get_model(X_test_dim)
-				# Y_test = get_model(X_test_dim)
-				# X_train = np.array(X_train)
-				# X_test = np.array(X_test)
-				# print(X_train.shape)
 				X_train = read_train(m, mid, mode)
 				X_test, y_test = read_test(m, mid, mode)
-				# X_train,Y_train = TRAIN_DENOISE(X_train)
-				# X_test = TRAIN_DENOISE(np.array(X_test))
-				# y_test = TRAIN_DENOISE(np.array(y_test))
 				y_pred_iv = GMM(X_train, X_test)
 
 				AUC = roc_auc_score(y_test, y_pred_iv)
@@ -164,14 +145,6 @@ def main(mode):
 
 				anom_scores_ensemble[m][mid] = {}
 				anom_scores = {'file':[], 'anomaly_score':[]}
-
-				# X_train_old = read_train(m, mid, mode)
-				# X_train_dim = X_train_old.ndim
-				# X_train = get_model(X_train_dim)
-				# X_test_old, eval_files_old = read_test(m, mid, mode)
-				# X_test_dim = X_test_old.ndim
-				# X_test = get_model(X_test_dim)
-				# eval_files = get_model(X_test_dim)
 				X_train = read_train(m, mid, mode)
 				X_test, eval_files = read_test(m, mid, mode)
 

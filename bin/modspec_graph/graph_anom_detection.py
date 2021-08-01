@@ -26,7 +26,6 @@ def build_net(X_train):
         edge_dict[e].append(min1)
     G = nx.Graph(edge_dict)
     sub_graphs = list(nx.connected_component_subgraphs(G))
-    # print('# of sub graphs = {}'.format(len(sub_graphs)))
     sub_graph_dict = {k: list(sub_graphs[k].nodes)
                               for k in range(len(sub_graphs))}
     return sub_graph_dict, G
@@ -81,11 +80,9 @@ def main(mode):
 
                 X_train, X_test, y_test = get_spectrums(
                     m, mid, reducenoise, mode)
-                # X_train = TRAIN_DENOISE(np.array(X_train_old))
-                # X_test = TRAIN_DENOISE(X_test)
-#                 X_train = get_model(X_train,X_test)
+                # X_train = TRAIN_DENOISE(np.array(X_train),np.array(X_test))
+#                 X_train = get_model(np.array(X_train),np.array(X_test))
 
-                # y_test = TRAIN_DENOISE(y_test)
                 subgraphs, Graph = build_net(X_train)
                 means, deviations = get_means(X_train, subgraphs)
 
