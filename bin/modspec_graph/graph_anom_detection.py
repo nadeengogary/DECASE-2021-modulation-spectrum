@@ -62,7 +62,7 @@ def main(mode):
                 'slider', 'valve'
                ]
 
-    reducenoise = 100
+    reducenoise = 80
 
     if mode == 'd':
 
