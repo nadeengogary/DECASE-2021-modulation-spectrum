@@ -11,7 +11,7 @@ def TRAIN_DENOISE(X,X_test):
     # X = X.reshape(-1)
     print(X.shape)
     n,m,s = X.shape
-    X = X.reshape(len(X),-1)
+    # X = X.reshape(len(X),-1)
     n_input_dim = X.shape[1]
     # n_output_dim = Y.shape[1]
 
