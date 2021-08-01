@@ -9,6 +9,8 @@ from Keras_model import *
 from Denoise_AE import *
 from sklearn import preprocessing
 from sklearn.model_selection import cross_val_score
+from sklearn import datasets
+from sklearn import svm
 
 def get_machine_ids(machines, mode):
 	mid_dict = {}
