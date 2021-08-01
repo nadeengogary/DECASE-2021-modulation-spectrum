@@ -8,7 +8,7 @@ from keras import optimizers
 ########################################################################
 def get_model(X,X_test):
     n,m,s = X.shape
-    X = X.reshape(len(X),-1)
+    # X = X.reshape(len(X),-1)
     inputDim = X.shape[1]
     inputLayer = Input(shape=(inputDim,))
 
