@@ -28,21 +28,9 @@ Anomalous Sound Detection is essential as noise generation in machines involves 
     - `sh download_dev_data.sh` for development data
     - `sh download_eval_data.sh` for evaluation data
 
-#### 3.1 Running System 1
-- `cd bin/modspec_graph/`
-- `python graph_anom_detection.py d` - for running on development data
-    - Modulation Spectrums for each machine-id will be stored in `npy` files in `saved/` in the same directory
-    - The results for development data are stored in `modspec_graph_dev_data_results.csv` in the same directory
-- `python graph_anom_detection.py e` - for running on evaluation data
-    - The results for evaluation data are stored in the submission format in the directory `task2`
-########### 3.1.1 Running simple Autoencoder on System 2
-- Do as specified in step 3.1
-- uncomment line 83 in `graph_anom_detection.py` class `X_train = get_model(np.array(X_train),np.array(X_test))`
-########## 3.1.2 Running Denoising Autoencoder on System 2
-- Do as specified in step 3.1
-- uncomment line 83 in `graph_anom_detection.py` class `X_train = TRAIN_DENOISE(np.array(X_train),np.array(X_test))`
 
-#### 3.2 Running System 2
+
+#### 3.1 Running System 1
 - i-Vectors for both development and evaluation have been provided in the zip file -  `saved_iVectors/ivector_mfcc_100.zip`
 - Unzip `ivector_mfcc_100.zip` in the same directory
     - Code for extracting i-Vectors will be added soon
@@ -51,13 +39,26 @@ Anomalous Sound Detection is essential as noise generation in machines involves 
     - The results for development data are stored in `iVectors_gmm_dev_data_results.csv` in the same directory
 - `python gmm.py e` - for running on evaluation data
     - The results for evaluation data are stored in the submission format in the directory `task2`
-########### 3.2.1 Running simple Autoencoder on System 2
-- Do as specified in step 3.2
+########### 3.1.1 Running simple Autoencoder on System 1
+- Do as specified in step 3.1
 - uncomment line 77 in `gmm.py` class ``# X_train = get_model(X_train,X_test)``
-########## 3.2.2 Running Denoising Autoencoder on System 2
-- Do as specified in step 3.2
+########## 3.1.2 Running Denoising Autoencoder on System 1
+- Do as specified in step 3.1
 - uncomment line 77 in `gmm.py` class `X_train = TRAIN_DENOISE(X_train,X_test)`
 
+#### 3.2 Running System 2
+- `cd bin/modspec_graph/`
+- `python graph_anom_detection.py d` - for running on development data
+    - Modulation Spectrums for each machine-id will be stored in `npy` files in `saved/` in the same directory
+    - The results for development data are stored in `modspec_graph_dev_data_results.csv` in the same directory
+- `python graph_anom_detection.py e` - for running on evaluation data
+    - The results for evaluation data are stored in the submission format in the directory `task2`
+########### 3.2.1 Running simple Autoencoder on System 2
+- Do as specified in step 3.2
+- uncomment line 83 in `graph_anom_detection.py` class `X_train = get_model(np.array(X_train),np.array(X_test))`
+########## 3.2.2 Running Denoising Autoencoder on System 2
+- Do as specified in step 3.2
+- uncomment line 83 in `graph_anom_detection.py` class `X_train = TRAIN_DENOISE(np.array(X_train),np.array(X_test))`
 
 #### 3.3 Running ensemble of System 1 and System 2
 - Run both System 1 and System 2
@@ -66,10 +67,11 @@ Anomalous Sound Detection is essential as noise generation in machines involves 
     - The results for development data are stored in `ensemble_dev_data_results.csv` in the same directory
 - `python ens.py e` - for running on evaluation data
     - The results for evaluation data are stored in the submission format in the directory `task2`
-########### 3.3.1 Running ensemble of System 1 and System 2 with Denoising Autoencoder
-- Perform steps 3.1.2 & 3.2.2
+
+########### 3.3.1 Running ensemble of System 1 and System 2 with Simple Autoencoder
+- Perform steps 3.1.1 & 3.2.1
 - Do as specified in step 3.3
 
 ########### 3.3.1 Running ensemble of System 1 and System 2 with Denoising Autoencoder
-- Perform steps 3.1.1 & 3.2.1
+- Perform steps 3.1.2 & 3.2.2
 - Do as specified in step 3.3

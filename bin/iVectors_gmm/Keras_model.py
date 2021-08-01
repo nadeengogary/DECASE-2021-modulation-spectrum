@@ -54,7 +54,6 @@ def get_model(X,X_test):
     # model.compile()
     # return model.predict(X)
     # return Model(inputs=inputLayer, outputs=h)
-    X_test = X_test.reshape(len(X_test),-1)
     opt = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-7, decay=0.0001, amsgrad=False)
     model.compile(loss='mse', optimizer=opt)
     model.fit(X,X,shuffle=True,validation_data=(X_test, X_test))
