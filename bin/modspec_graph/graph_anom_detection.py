@@ -80,10 +80,10 @@ def main(mode):
 
                 X_train_old, X_test, y_test = get_spectrums(
                     m, mid, reducenoise, mode)
-                X_train = TRAIN_DENOISE(np.array(X_train_old),np.array(X_test))
-                # X_train = get_model(np.array(X_train_old),np.array(X_test))
+                # X_train = TRAIN_DENOISE(np.array(X_train_old),np.array(X_test))
+                X_train = get_model(np.array(X_train),np.array(X_test))
 
-                subgraphs, Graph = build_net(X_train_old)
+                subgraphs, Graph = build_net(X_train)
                 means, deviations = get_means(X_train, subgraphs)
 
                 y_pred_gr = get_anom_score(X_test, means, deviations)
